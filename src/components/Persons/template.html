@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div id="main-container">
+        <input type="text" class="search-bar" autocomplete="off" placeholder="Search ..." v-model="enteredText">
+        <select name="sortBy" id="sortBy" @change="sortBy(sortType)" v-model="sortType">
+            <option v-for="item in sortOptions" :value="item.value">{{ item.text }}</option>
+        </select>
+        <select name="show" id="show"v-model="previewType">
+            <option v-for="item in showItems"  :value="item.value" >{{ item.text }}</option>
+        </select>
+        <table class="main-table">
+            <tr class="main-table__row">
+                <th class="name">Full Name</th>
+                <th class="balance">Balance</th>
+                <th class="isActive">isActive</th>
+                <th class="registered">Registered</th>
+                <th class="state">State</th>
+                <th class="country">Country</th>
+            </tr>
+            <tr v-for="(g,index) in filteredPerson" :key="index">
+                <td class="name">{{ g.fullName }}</td>
+                <td class="balance">{{ g.balance }}</td>
+                <td class="isActive">{{ g.isActive }}</td>
+                <td class="registered">{{ g.registered }}</td>
+                <td class="state">{{ g.state }}</td>
+                <td class="country">{{ g.country }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
